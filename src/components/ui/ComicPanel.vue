@@ -7,10 +7,27 @@
 </template>
 
 <script setup>
-defineProps({
+/**
+ * 만화 스타일 패널 컴포넌트
+ * 특징 카드, 정보 박스 등에 재사용
+ */
+const props = defineProps({
+  /**
+   * 호버 효과 활성화 여부
+   */
   hasHover: {
     type: Boolean,
-    default: true
+    default: true,
+    validator: (value) => typeof value === 'boolean'
+  },
+
+  /**
+   * 패널 변형 스타일 (향후 확장용)
+   */
+  variant: {
+    type: String,
+    default: 'default',
+    validator: (value) => ['default', 'highlighted', 'muted'].includes(value)
   }
 })
 </script>

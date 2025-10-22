@@ -1,5 +1,5 @@
 <template>
-  <div class="language-switcher">
+  <div ref="languageSwitcherRef" class="language-switcher">
     <button
       class="lang-button"
       :class="{ 'is-open': isOpen }"
@@ -28,13 +28,17 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { saveLanguage } from '@/utils/languageDetector'
+import { loadLocaleMessages } from '@/plugins/i18n'
+import { useClickOutside } from '@/composables/useClickOutside'
 
 const { locale } = useI18n()
+const i18n = useI18n()
 
 const isOpen = ref(false)
+const languageSwitcherRef = ref(null)
 
 const languages = [
   { code: 'ko', name: '한국어', flag: '🇰🇷' },
@@ -46,30 +50,41 @@ const currentLanguage = computed(() => {
   return languages.find(lang => lang.code === locale.value) || languages[1]
 })
 
+/**
+ * 드롭다운 토글
+ */
 const toggleDropdown = () => {
   isOpen.value = !isOpen.value
 }
 
-const selectLanguage = code => {
+/**
+ * 언어 선택 및 변경
+ * 필요시 언어 파일을 동적으로 로드
+ */
+const selectLanguage = async (code) => {
+  if (locale.value === code) {
+    isOpen.value = false
+    return
+  }
+
+  // 언어 파일이 없으면 동적 로드
+  await loadLocaleMessages(i18n, code)
+
+  // 언어 변경
   locale.value = code
   saveLanguage(code)
   isOpen.value = false
 
+  // HTML lang 속성 업데이트 (SEO & 접근성)
   document.documentElement.lang = code
 }
 
-const closeDropdown = event => {
-  if (!event.target.closest('.language-switcher')) {
-    isOpen.value = false
-  }
-}
-
-onMounted(() => {
-  document.addEventListener('click', closeDropdown)
-})
-
-onUnmounted(() => {
-  document.removeEventListener('click', closeDropdown)
+/**
+ * 외부 클릭 시 드롭다운 닫기
+ * useClickOutside composable 활용
+ */
+useClickOutside(languageSwitcherRef, () => {
+  isOpen.value = false
 })
 </script>
 

@@ -29,32 +29,84 @@ const { t } = useI18n()
 
 const hasError = ref(false)
 const errorDetails = ref(null)
+const errorCount = ref(0)
 
+/**
+ * Vue 에러 캐치 핸들러
+ * 전역 에러를 캐치하여 에러 바운더리로 처리
+ */
 onErrorCaptured((err, instance, info) => {
   hasError.value = true
-  errorDetails.value = `
-Error: ${err.message}
-Info: ${info}
-Stack: ${err.stack}
-Component: ${instance?.$options?.name || 'Unknown'}
-  `.trim()
+  errorCount.value++
 
+  // 에러 세부 정보 생성
+  errorDetails.value = formatErrorDetails(err, instance, info)
+
+  // 개발 환경에서 콘솔 로깅
   if (import.meta.env.DEV) {
-    console.error('Error caught by ErrorBoundary:', err)
-    console.error('Component info:', info)
-    console.error('Instance:', instance)
+    console.group('🚨 Error caught by ErrorBoundary')
+    console.error('Error:', err)
+    console.error('Component:', instance?.$options?.name || 'Unknown')
+    console.error('Info:', info)
+    console.error('Stack:', err.stack)
+    console.groupEnd()
   }
 
+  // 프로덕션 환경에서 에러 리포팅 (필요시 활성화)
+  if (import.meta.env.PROD) {
+    reportErrorToService(err, instance, info)
+  }
+
+  // 에러 전파 중단
   return false
 })
 
+/**
+ * 에러 세부 정보 포맷팅
+ */
+function formatErrorDetails(err, instance, info) {
+  const timestamp = new Date().toISOString()
+  const componentName = instance?.$options?.name || 'Unknown Component'
+
+  return `
+[${timestamp}]
+Error: ${err.message}
+Component: ${componentName}
+Info: ${info}
+Stack Trace:
+${err.stack}
+  `.trim()
+}
+
+/**
+ * 에러 리포팅 서비스 (향후 확장용)
+ * Sentry, LogRocket 등과 연동 가능
+ */
+function reportErrorToService(err, instance, info) {
+  // TODO: 에러 리포팅 서비스 연동
+  // 예: Sentry.captureException(err)
+  console.warn('Error reporting not configured')
+}
+
+/**
+ * 페이지 새로고침
+ */
 const handleReload = () => {
   window.location.reload()
 }
 
+/**
+ * 에러 상태 리셋
+ * 에러 발생 후 복구 시도
+ */
 const handleReset = () => {
   hasError.value = false
   errorDetails.value = null
+
+  // 에러 발생 횟수가 많으면 경고
+  if (errorCount.value > 3) {
+    console.warn(`Multiple errors detected (${errorCount.value}). Consider refreshing the page.`)
+  }
 }
 </script>
 

@@ -48,6 +48,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useThrottle } from '@/composables/useThrottle'
 import LanguageSwitcher from './LanguageSwitcher.vue'
 
 const { t } = useI18n()
@@ -60,27 +61,59 @@ const navLinks = computed(() => [
   { id: 'gameplay', href: '#gameplay', label: t('gameplay.title') }
 ])
 
-const handleScroll = () => {
+/**
+ * 스크롤 이벤트 핸들러 (throttled)
+ * 성능 최적화: 16ms(~60fps) 간격으로 throttle
+ */
+const handleScroll = useThrottle(() => {
   isScrolled.value = window.scrollY > 50
-}
+}, 16)
 
+/**
+ * 모바일 메뉴 토글
+ * 바디 스크롤 제어로 UX 개선
+ */
 const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value
-  document.body.style.overflow = isMobileMenuOpen.value ? 'hidden' : ''
+
+  // 모바일 메뉴 열릴 때 body 스크롤 방지
+  if (isMobileMenuOpen.value) {
+    document.body.style.overflow = 'hidden'
+    document.body.style.position = 'fixed'
+    document.body.style.width = '100%'
+  } else {
+    document.body.style.overflow = ''
+    document.body.style.position = ''
+    document.body.style.width = ''
+  }
 }
 
+/**
+ * 모바일 메뉴 닫기
+ * 네비게이션 링크 클릭 시 자동 닫힘
+ */
 const closeMobileMenu = () => {
   isMobileMenuOpen.value = false
   document.body.style.overflow = ''
+  document.body.style.position = ''
+  document.body.style.width = ''
 }
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
+  // passive 옵션으로 스크롤 성능 개선
+  window.addEventListener('scroll', handleScroll, { passive: true })
+
+  // 초기 스크롤 상태 설정
+  handleScroll()
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
+
+  // cleanup: body 스타일 복원
   document.body.style.overflow = ''
+  document.body.style.position = ''
+  document.body.style.width = ''
 })
 </script>
 
