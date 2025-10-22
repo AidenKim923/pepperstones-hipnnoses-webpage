@@ -1,5 +1,8 @@
 import { createI18n } from 'vue-i18n'
 
+// 전역 i18n 인스턴스 (다른 모듈에서 접근 가능)
+let i18nInstance = null
+
 /**
  * i18n 플러그인 설정
  * 다국어 지원을 위한 vue-i18n 초기화
@@ -29,7 +32,7 @@ export async function setupI18n(locale = 'en') {
     messages.en = fallbackLocale.default || fallbackLocale
   }
 
-  const i18n = createI18n({
+  i18nInstance = createI18n({
     legacy: false, // Composition API 사용
     locale,
     fallbackLocale: 'en',
@@ -38,25 +41,37 @@ export async function setupI18n(locale = 'en') {
     silentFallbackWarn: import.meta.env.PROD // 프로덕션에서는 경고 숨김
   })
 
-  return i18n
+  return i18nInstance
+}
+
+/**
+ * i18n 인스턴스 가져오기
+ * @returns {Object} - i18n 인스턴스
+ */
+export function getI18n() {
+  return i18nInstance
 }
 
 /**
  * 언어 동적 로드
  * 언어 전환 시 필요한 언어 파일을 동적으로 로드
  *
- * @param {Object} i18n - i18n 인스턴스
  * @param {String} locale - 로드할 언어
  */
-export async function loadLocaleMessages(i18n, locale) {
+export async function loadLocaleMessages(locale) {
+  if (!i18nInstance) {
+    console.error('i18n instance not initialized')
+    return
+  }
+
   // 이미 로드된 언어는 스킵
-  if (i18n.global.availableLocales.includes(locale)) {
+  if (i18nInstance.global.availableLocales.includes(locale)) {
     return
   }
 
   try {
     const messages = await import(`../locales/${locale}.json`)
-    i18n.global.setLocaleMessage(locale, messages.default || messages)
+    i18nInstance.global.setLocaleMessage(locale, messages.default || messages)
   } catch (error) {
     console.error(`Failed to load locale ${locale}:`, error)
   }
