@@ -1,0 +1,115 @@
+{
+  "hero": {
+    "title": "HIPS N NOSES",
+    "subtitle": "Hips N Noses",
+    "catchphrase": "Only Mela Dreams in a Sleepless World",
+    "soundEffect": "DREAM!",
+    "cta": {
+      "video": "Watch Gameplay Trailer",
+      "wishlist": "Add to Steam Wishlist"
+    },
+    "scrollHint": "Scroll to Explore"
+  },
+  "features": {
+    "title": "Game Features",
+    "recipe": {
+      "title": "Recipe Customization",
+      "description": "Craft food and drinks tailored to each customer's taste and make your cafe a success with perfect service!",
+      "effect": "YUM!"
+    },
+    "combat": {
+      "title": "Dream World Combat",
+      "description": "Enter the mystical dream world at night! Defeat monsters and collect ingredients with roguelike action!",
+      "effect": "ZZAP!"
+    },
+    "cafe": {
+      "title": "Cafe Customization",
+      "description": "Invest your profits to upgrade your cafe, unlock new menus, and create your own unique space!",
+      "effect": "DING!"
+    },
+    "story": {
+      "title": "Story-Driven Journey",
+      "description": "Gather clues through conversations with customers and collect memory flowers to reclaim your lost past!",
+      "effect": "POW!"
+    }
+  },
+  "characters": {
+    "title": "Characters",
+    "character1": {
+      "name": "Mela",
+      "class": "Cafe Owner",
+      "ability": "Recipe Customization",
+      "description": "The only person who can dream. Runs a cafe by day and searches for lost memories in the dream world by night"
+    },
+    "character2": {
+      "name": "Regular Customers",
+      "class": "Cafe Guests",
+      "ability": "Story Hints",
+      "description": "Cafe regulars with their own stories. Conversations with them provide crucial clues to recovering Mela's memories"
+    },
+    "character3": {
+      "name": "Dream Monsters",
+      "class": "Boss Monsters",
+      "ability": "Special Ingredient Drops",
+      "description": "Mysterious beings wandering the dream world. Defeat them to obtain rare ingredients"
+    }
+  },
+  "gameplay": {
+    "title": "Gameplay Gallery",
+    "subtitle": "Run a cafe by day, explore dreams by night!",
+    "videoTitle": "Official Gameplay Trailer",
+    "videos": {
+      "desc1": "HIPS N NOSES is a unique game that combines management simulation with action roguelike elements. At night, enter the dream world to defeat monsters and collect rare ingredients, and during the day, run a cafe that helps customers regain their lost memories in the real world.",
+      "desc2": "Each customer who visits the cafe has unique tastes and preferences. You can adjust and enhance recipes with the best ingredients through hints in conversations. Satisfying even the most demanding customers will bring greater rewards and profits.",
+      "desc3": "The ever-changing dream world offers a new experience with every exploration. Various people you meet in reality also appear in the dream world, and together you can defeat numerous monsters and collect special ingredients that cannot be obtained in reality.",
+      "desc4": "You can decorate your cafe with various kitchen tools, interact with diverse customers, and become stronger by defeating dream monsters. Through this growth system, you can efficiently serve more customers, adding depth and long-term fun to the game."
+    }
+  },
+  "gameInfo": {
+    "title": "Game Information",
+    "releaseDate": {
+      "label": "Release",
+      "value": "2026 Q1 (Early Access)"
+    },
+    "platform": {
+      "label": "Platform",
+      "value": "PC (Steam)"
+    },
+    "genre": {
+      "label": "Genre",
+      "value": "Cafe Simulation + Action Roguelike"
+    },
+    "developer": {
+      "label": "Developer",
+      "value": "PepperStones.Inc"
+    },
+    "steamLink": "View on Steam"
+  },
+  "social": {
+    "title": "Community",
+    "subtitle": "Stay updated with the latest news!",
+    "steam": "Steam Page",
+    "discord": "Join Discord",
+    "x": "Follow on X",
+    "instagram": "Follow on Instagram",
+    "newsletter": {
+      "title": "Subscribe to Newsletter",
+      "placeholder": "Email Address",
+      "button": "Subscribe"
+    }
+  },
+  "footer": {
+    "rights": "© 2025 PepperStones.Inc. All rights reserved.",
+    "language": "Language"
+  },
+  "error": {
+    "title": "Oops! Something went wrong",
+    "message": "We're sorry, but something unexpected happened. Please try refreshing the page or contact us if the problem persists.",
+    "reload": "Reload Page",
+    "reset": "Try Again",
+    "technicalDetails": "Technical Details"
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content"
+  }
+}
