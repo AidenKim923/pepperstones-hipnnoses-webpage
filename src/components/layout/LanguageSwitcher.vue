@@ -35,7 +35,6 @@ import { loadLocaleMessages } from '@/plugins/i18n'
 import { useClickOutside } from '@/composables/useClickOutside'
 
 const { locale } = useI18n()
-const i18n = useI18n()
 
 const isOpen = ref(false)
 const languageSwitcherRef = ref(null)
@@ -68,7 +67,7 @@ const selectLanguage = async (code) => {
   }
 
   // 언어 파일이 없으면 동적 로드
-  await loadLocaleMessages(i18n, code)
+  await loadLocaleMessages(code)
 
   // 언어 변경
   locale.value = code
