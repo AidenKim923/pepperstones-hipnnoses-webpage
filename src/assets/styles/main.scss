@@ -193,6 +193,14 @@ img {
 }
 
 // Skip to content link (접근성 향상)
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .skip-to-content {
   position: absolute;
   top: -100px;
