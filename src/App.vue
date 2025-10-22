@@ -1,7 +1,6 @@
 <template>
   <ErrorBoundary>
     <div id="app">
-      <!-- Skip to main content link for accessibility -->
       <a href="#main-content" class="skip-to-content">{{ $t('accessibility.skipToContent') }}</a>
 
       <AppHeader />
@@ -17,7 +16,6 @@
           <GameplaySection />
         </section>
 
-        <SocialSection />
       </main>
 
       <AppFooter />
@@ -32,10 +30,8 @@ import AppFooter from '@/components/layout/AppFooter.vue'
 import HeroSection from '@/components/sections/HeroSection.vue'
 import FeaturesSection from '@/components/sections/FeaturesSection.vue'
 import GameplaySection from '@/components/sections/GameplaySection.vue'
-import SocialSection from '@/components/sections/SocialSection.vue'
 import { useScrollAnimation } from '@/composables/useScrollAnimation'
 
-// 스크롤 애니메이션 초기화
 useScrollAnimation()
 </script>
 

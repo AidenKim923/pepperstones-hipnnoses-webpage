@@ -30,7 +30,6 @@ const { t } = useI18n()
 const hasError = ref(false)
 const errorDetails = ref(null)
 
-// Vue 3의 onErrorCaptured 훅을 사용하여 하위 컴포넌트의 에러를 캡처
 onErrorCaptured((err, instance, info) => {
   hasError.value = true
   errorDetails.value = `
@@ -40,14 +39,12 @@ Stack: ${err.stack}
 Component: ${instance?.$options?.name || 'Unknown'}
   `.trim()
 
-  // 에러를 콘솔에도 출력 (개발 환경에서 디버깅용)
   if (import.meta.env.DEV) {
     console.error('Error caught by ErrorBoundary:', err)
     console.error('Component info:', info)
     console.error('Instance:', instance)
   }
 
-  // false를 반환하여 에러 전파 중지
   return false
 })
 

@@ -1,6 +1,13 @@
 @import './variables.scss';
 @import './animations.scss';
 
+@font-face {
+  font-family: 'YEONGJUSeonbi';
+  src: url('@/assets/fonts/YEONGJUSeonbi.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 * {
   margin: 0;
@@ -23,7 +30,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-
 .soft-card {
   background: $bg-card;
   border: $border-width solid $border-primary;
@@ -37,7 +43,6 @@ body {
   }
 }
 
-
 button {
   font-family: inherit;
   cursor: pointer;
@@ -50,20 +55,17 @@ button {
   }
 }
 
-
 a {
   color: inherit;
   text-decoration: none;
   transition: all $transition-base ease;
 }
 
-
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
-
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -82,12 +84,10 @@ img {
   }
 }
 
-
 ::selection {
   background-color: $accent-primary;
   color: $color-white;
 }
-
 
 .container {
   width: 100%;
@@ -99,7 +99,6 @@ img {
     padding: 0 $spacing-md;
   }
 }
-
 
 .section {
   padding: $spacing-5xl 0;
@@ -113,7 +112,6 @@ img {
     padding: $spacing-3xl 0;
   }
 }
-
 
 .text-center {
   text-align: center;
@@ -155,7 +153,6 @@ img {
   gap: $spacing-xl;
 }
 
-
 .hidden-mobile {
   @media (max-width: $breakpoint-mobile) {
     display: none;
@@ -168,7 +165,6 @@ img {
   }
 }
 
-
 .loading-spinner {
   display: inline-block;
   width: 40px;
@@ -178,7 +174,6 @@ img {
   border-radius: 50%;
   animation: spin-slow 1s linear infinite;
 }
-
 
 .sr-only {
   position: absolute;
@@ -192,7 +187,6 @@ img {
   border-width: 0;
 }
 
-// Skip to content link (접근성 향상)
 .hero {
   height: 100vh;
   display: flex;
@@ -222,7 +216,6 @@ img {
   }
 }
 
-// 포커스 가시성 향상
 :focus-visible {
   outline: 2px solid $accent-primary;
   outline-offset: 2px;

@@ -29,7 +29,7 @@ fs.readdir(imagesDir, (err, files) => {
           console.error(`Error converting ${pngFile} to WebP:`, err);
         } else {
           console.log(`Successfully converted ${pngFile} to ${outputFileName}`);
-          // Delete the original PNG file
+
           fs.unlink(inputPath, (unlinkErr) => {
             if (unlinkErr) {
               console.error(`Error deleting original PNG file ${pngFile}:`, unlinkErr);
