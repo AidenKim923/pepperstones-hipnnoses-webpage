@@ -20,19 +20,20 @@
                 height: 100%;
               "
               src="https://www.youtube.com/embed/w7rcEfJT9vc"
-              title="YouTube video player"
+              title="HIPS N NOSES - Official Gameplay Trailer"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
               loading="lazy"
+              aria-label="HIPS N NOSES gameplay trailer video"
             ></iframe>
           </div>
         </div>
 
         <div class="screenshots-grid">
           <div
-            v-for="(video, index) in steamVideos"
-            :key="index"
+            v-for="video in steamVideos"
+            :key="video.id"
             class="screenshot-item"
             :data-animate="true"
           >
@@ -42,9 +43,13 @@
               muted
               loop
               playsinline
-              loading="lazy"
+              preload="metadata"
               class="screenshot-placeholder"
-            ></video>
+              :aria-label="$t(video.descKey)"
+            >
+              <!-- fallback 메시지 -->
+              <p>{{ $t('error.videoNotSupported', 'Your browser does not support video playback.') }}</p>
+            </video>
             <div class="video-description">
               <p>{{ $t(video.descKey) }}</p>
             </div>
@@ -60,22 +65,34 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
+/**
+ * Steam 비디오 갤러리 데이터
+ * CDN에서 호스팅되는 WebM 비디오
+ */
 const steamVideos = [
   {
+    id: 'video-1',
     url: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3574200/extras/12e86ef46d00f31168d3ee9b0545e02e.webm?t=1758499452',
-    descKey: 'gameplay.videos.desc1'
+    descKey: 'gameplay.videos.desc1',
+    thumbnail: null // 필요시 썸네일 추가
   },
   {
+    id: 'video-2',
     url: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3574200/extras/b039d53db7e8cf6f194624be12091b86.webm?t=1758499452',
-    descKey: 'gameplay.videos.desc2'
+    descKey: 'gameplay.videos.desc2',
+    thumbnail: null
   },
   {
+    id: 'video-3',
     url: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3574200/extras/35b319f3ae3625917730ee3812d2f812.webm?t=1758499452',
-    descKey: 'gameplay.videos.desc3'
+    descKey: 'gameplay.videos.desc3',
+    thumbnail: null
   },
   {
+    id: 'video-4',
     url: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3574200/extras/a8a9e34e570f27f52b8973c2623c9f7d.webm?t=1758499452',
-    descKey: 'gameplay.videos.desc4'
+    descKey: 'gameplay.videos.desc4',
+    thumbnail: null
   }
 ]
 </script>

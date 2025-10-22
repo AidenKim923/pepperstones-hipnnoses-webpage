@@ -2,7 +2,14 @@
   <section class="hero-section">
     <div class="hero-content container">
       <div class="hero-logo" data-animate>
-        <img src="@/assets/images/logo.webp" alt="HIPS N NOSES" class="logo-image" />
+        <img
+          src="@/assets/images/logo.webp"
+          alt="HIPS N NOSES"
+          class="logo-image"
+          width="600"
+          height="auto"
+          fetchpriority="high"
+        />
       </div>
 
       <div class="social-links-compact" data-animate>
@@ -28,12 +35,16 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { EXTERNAL_URLS } from '@/constants/urls'
 
 const { t } = useI18n()
 
+/**
+ * 소셜 링크 데이터
+ * computed를 사용하여 언어 변경 시 자동 업데이트
+ */
 const socialLinks = computed(() => [
   {
     icon: 'steam',
@@ -56,6 +67,21 @@ const socialLinks = computed(() => [
     url: EXTERNAL_URLS.INSTAGRAM
   }
 ])
+
+/**
+ * 배경 이미지 preload
+ * LCP(Largest Contentful Paint) 최적화
+ */
+const isBackgroundLoaded = ref(false)
+
+onMounted(() => {
+  // 배경 이미지 preload
+  const bgImage = new Image()
+  bgImage.src = new URL('@/assets/images/background.webp', import.meta.url).href
+  bgImage.onload = () => {
+    isBackgroundLoaded.value = true
+  }
+})
 </script>
 
 <style scoped lang="scss">
