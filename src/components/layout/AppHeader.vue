@@ -57,9 +57,7 @@ const isMobileMenuOpen = ref(false)
 
 const navLinks = computed(() => [
   { id: 'features', href: '#features', label: t('features.title') },
-  { id: 'characters', href: '#characters', label: t('characters.title') },
-  { id: 'gameplay', href: '#gameplay', label: t('gameplay.title') },
-  { id: 'info', href: '#info', label: t('gameInfo.title') }
+  { id: 'gameplay', href: '#gameplay', label: t('gameplay.title') }
 ])
 
 const handleScroll = () => {

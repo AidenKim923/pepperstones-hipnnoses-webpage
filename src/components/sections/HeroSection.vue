@@ -2,14 +2,13 @@
   <section class="hero-section">
     <div class="hero-content container">
       <div class="hero-logo" data-animate>
-        <h1 class="game-title">
-          <span class="title-main">{{ $t('hero.title') }}</span>
-          <span class="title-sub">{{ $t('hero.subtitle') }}</span>
-        </h1>
+        <img src="@/assets/images/logo.webp" alt="HIPS N NOSES" class="logo-image" />
       </div>
 
       <p class="hero-catchphrase" data-animate>
-        {{ $t('hero.catchphrase') }}
+        <span class="text-part1">잠 못 드는 세상 </span>
+        <span class="text-part2">멜라</span>
+        <span class="text-part3">만 꿈을 꾼다</span>
       </p>
 
       <div class="hero-cta" data-animate>
@@ -53,18 +52,26 @@ const openSteamPage = () => {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(180deg, $bg-primary 0%, $bg-secondary 100%);
+  background-image: url('@/assets/images/background.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @media (max-width: $breakpoint-mobile) {
+    background-size: auto 100%;
+    background-position: center center;
+  }
 
   &::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image:
-      linear-gradient($border-secondary 1px, transparent 1px),
-      linear-gradient(90deg, $border-secondary 1px, transparent 1px);
-    background-size: 50px 50px;
-    opacity: 0.5;
+    background: linear-gradient(180deg, rgba($bg-primary, 0.4) 0%, rgba($bg-secondary, 0.5) 100%);
     pointer-events: none;
+
+    @media (max-width: $breakpoint-mobile) {
+      background: linear-gradient(180deg, rgba($bg-primary, 0.2) 0%, rgba($bg-secondary, 0.3) 100%);
+    }
   }
 
   .hero-content {
@@ -72,72 +79,80 @@ const openSteamPage = () => {
     z-index: 1;
     text-align: center;
     padding: $spacing-2xl 0;
+
+    @media (max-width: $breakpoint-mobile) {
+      padding-top: 25vh;
+    }
   }
 
   .hero-logo {
     margin-bottom: $spacing-2xl;
     animation: fade-in-up 0.8s $easing-smooth both;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  .game-title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: $spacing-md;
+  .logo-image {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    animation: float 3s ease-in-out infinite;
+    display: block;
 
-    .title-main {
-      font-family: $font-heading;
-      font-size: $font-size-8xl;
-      font-weight: 700;
-      line-height: 1;
-      color: $text-primary;
-      letter-spacing: -0.02em;
-
-      @media (max-width: $breakpoint-tablet) {
-        font-size: $font-size-6xl;
-      }
-
-      @media (max-width: $breakpoint-mobile) {
-        font-size: $font-size-5xl;
-      }
+    @media (max-width: $breakpoint-tablet) {
+      max-width: 450px;
     }
 
-    .title-sub {
-      font-family: $font-display;
-      font-size: $font-size-3xl;
-      font-weight: 500;
-      color: $accent-primary;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
+    @media (max-width: $breakpoint-mobile) {
+      max-width: 300px;
+    }
+  }
 
-      @media (max-width: $breakpoint-tablet) {
-        font-size: $font-size-2xl;
-      }
-
-      @media (max-width: $breakpoint-mobile) {
-        font-size: $font-size-xl;
-      }
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
     }
   }
 
   .hero-catchphrase {
-    font-family: $font-display;
-    font-size: $font-size-2xl;
-    font-weight: 400;
-    color: $text-secondary;
+    font-family: 'MitmiFont', 'Noto Sans KR', sans-serif;
+    font-size: $font-size-5xl;
+    font-weight: 700;
     margin-bottom: $spacing-3xl;
-    max-width: 600px;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
     animation: fade-in-up 0.8s $easing-smooth 0.2s both;
 
     @media (max-width: $breakpoint-tablet) {
-      font-size: $font-size-xl;
+      font-size: $font-size-4xl;
     }
 
     @media (max-width: $breakpoint-mobile) {
-      font-size: $font-size-lg;
+      font-size: $font-size-2xl;
       padding: 0 $spacing-md;
+    }
+
+    span {
+      -webkit-text-stroke: 6px #FFFFFF;
+      text-stroke: 2px #FFFFFF;
+      paint-order: stroke fill;
+    }
+
+    .text-part1 {
+      color: #443650;
+    }
+
+    .text-part2 {
+      color: #ec986a;
+    }
+
+    .text-part3 {
+      color: #000000;
     }
   }
 
