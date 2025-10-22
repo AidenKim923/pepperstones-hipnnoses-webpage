@@ -35,7 +35,7 @@ const { t } = useI18n()
 import recipeIcon from '@/assets/images/recipe.webp'
 import combatIcon from '@/assets/images/combat.webp'
 import storyIcon from '@/assets/images/story.webp'
-import cafeIcon from '@/assets/images/cafe.webp'
+import cafeIcon from '@/assets/images/Cafe.webp'
 
 const features = computed(() => [
   {
