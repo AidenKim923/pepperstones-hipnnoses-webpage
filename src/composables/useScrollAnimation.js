@@ -4,7 +4,6 @@ export function useScrollAnimation() {
   let observer = null
 
   const initObserver = () => {
-    // 애니메이션 대상 요소들의 초기 스타일 설정
     const animateElements = document.querySelectorAll('[data-animate]')
     animateElements.forEach((el, index) => {
       el.style.opacity = '0'
@@ -13,7 +12,6 @@ export function useScrollAnimation() {
       el.style.transitionDelay = `${index * 0.05}s`
     })
 
-    // IntersectionObserver 설정
     const options = {
       threshold: 0.1,
       rootMargin: '0px 0px -50px 0px'
@@ -28,7 +26,6 @@ export function useScrollAnimation() {
       })
     }, options)
 
-    // 요소들 관찰 시작
     animateElements.forEach(el => observer.observe(el))
   }
 

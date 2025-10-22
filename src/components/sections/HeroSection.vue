@@ -5,19 +5,18 @@
         <img src="@/assets/images/logo.webp" alt="HIPS N NOSES" class="logo-image" />
       </div>
 
-      <p class="hero-catchphrase" data-animate>
-        <span class="text-part1">잠 못 드는 세상 </span>
-        <span class="text-part2">멜라</span>
-        <span class="text-part3">만 꿈을 꾼다</span>
-      </p>
-
-      <div class="hero-cta" data-animate>
-        <ComicButton size="lg" @click="scrollToGameplay">
-          {{ $t('hero.cta.video') }}
-        </ComicButton>
-        <ComicButton size="lg" variant="secondary" @click="openSteamPage">
-          {{ $t('hero.cta.wishlist') }}
-        </ComicButton>
+      <div class="social-links-compact" data-animate>
+        <a
+          v-for="(social, index) in socialLinks"
+          :key="index"
+          :href="social.url"
+          class="social-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          :aria-label="`Visit our ${social.label}`"
+        >
+          <font-awesome-icon :icon="['fab', social.icon]" class="social-icon" />
+        </a>
       </div>
 
       <div class="scroll-hint" data-animate>
@@ -29,19 +28,34 @@
 </template>
 
 <script setup>
-import ComicButton from '@/components/ui/ComicButton.vue'
-import { EXTERNAL_URLS, LINK_OPTIONS } from '@/constants/urls'
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { EXTERNAL_URLS } from '@/constants/urls'
 
-const scrollToGameplay = () => {
-  const gameplaySection = document.querySelector('.gameplay-section')
-  if (gameplaySection) {
-    gameplaySection.scrollIntoView({ behavior: 'smooth' })
+const { t } = useI18n()
+
+const socialLinks = computed(() => [
+  {
+    icon: 'steam',
+    label: t('social.steam'),
+    url: EXTERNAL_URLS.STEAM
+  },
+  {
+    icon: 'discord',
+    label: t('social.discord'),
+    url: EXTERNAL_URLS.DISCORD
+  },
+  {
+    icon: 'x-twitter',
+    label: t('social.x'),
+    url: EXTERNAL_URLS.TWITTER
+  },
+  {
+    icon: 'instagram',
+    label: t('social.instagram'),
+    url: EXTERNAL_URLS.INSTAGRAM
   }
-}
-
-const openSteamPage = () => {
-  window.open(EXTERNAL_URLS.STEAM, '_blank', LINK_OPTIONS)
-}
+])
 </script>
 
 <style scoped lang="scss">
@@ -66,7 +80,7 @@ const openSteamPage = () => {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba($bg-primary, 0.4) 0%, rgba($bg-secondary, 0.5) 100%);
+    background: linear-gradient(180deg, rgba($bg-primary, 0.2) 0%, rgba($bg-secondary, 0.3) 100%);
     pointer-events: none;
 
     @media (max-width: $breakpoint-mobile) {
@@ -86,11 +100,16 @@ const openSteamPage = () => {
   }
 
   .hero-logo {
+    margin-top: calc(#{$spacing-5xl} + 100px);
     margin-bottom: $spacing-2xl;
     animation: fade-in-up 0.8s $easing-smooth both;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (max-width: $breakpoint-mobile) {
+      margin-top: $spacing-3xl;
+    }
   }
 
   .logo-image {
@@ -118,55 +137,61 @@ const openSteamPage = () => {
     }
   }
 
-  .hero-catchphrase {
-    font-family: 'MitmiFont', 'Noto Sans KR', sans-serif;
-    font-size: $font-size-5xl;
-    font-weight: 700;
-    margin-bottom: $spacing-3xl;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    animation: fade-in-up 0.8s $easing-smooth 0.2s both;
-
-    @media (max-width: $breakpoint-tablet) {
-      font-size: $font-size-4xl;
-    }
-
-    @media (max-width: $breakpoint-mobile) {
-      font-size: $font-size-2xl;
-      padding: 0 $spacing-md;
-    }
-
-    span {
-      -webkit-text-stroke: 6px #FFFFFF;
-      text-stroke: 2px #FFFFFF;
-      paint-order: stroke fill;
-    }
-
-    .text-part1 {
-      color: #443650;
-    }
-
-    .text-part2 {
-      color: #ec986a;
-    }
-
-    .text-part3 {
-      color: #000000;
-    }
-  }
-
-  .hero-cta {
+  .social-links-compact {
     display: flex;
-    gap: $spacing-lg;
     justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: $spacing-4xl;
+    align-items: center;
+    gap: $spacing-xl;
+    margin-bottom: $spacing-3xl;
     animation: fade-in-up 0.8s $easing-smooth 0.4s both;
 
     @media (max-width: $breakpoint-mobile) {
-      flex-direction: column;
+      gap: $spacing-lg;
+      margin-bottom: $spacing-2xl;
+    }
+
+    .social-link {
+      display: flex;
       align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      background: rgba($bg-card, 0.95);
+      border: 2px solid rgba($text-primary, 0.3);
+      border-radius: $border-radius-lg;
+      color: $text-primary;
+      transition: all $transition-base $easing-smooth;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      box-shadow: $shadow-md;
+
+      @media (max-width: $breakpoint-mobile) {
+        width: 52px;
+        height: 52px;
+      }
+
+      &:hover {
+        background: $bg-elevated;
+        border-color: $accent-primary;
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: $shadow-lg, $glow-primary;
+
+        .social-icon {
+          color: $accent-primary;
+        }
+      }
+
+      .social-icon {
+        width: 32px;
+        height: 32px;
+        color: $text-primary;
+        transition: color $transition-base;
+
+        @media (max-width: $breakpoint-mobile) {
+          width: 26px;
+          height: 26px;
+        }
+      }
     }
   }
 

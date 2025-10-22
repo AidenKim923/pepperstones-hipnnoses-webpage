@@ -29,7 +29,7 @@
     },
     "story": {
       "title": "Story-Driven Journey",
-      "description": "Gather clues through conversations with customers and collect memory flowers to reclaim your lost past!",
+      "description": "Collect memory flowers to help your customers recover their lost memories!",
       "effect": "POW!"
     }
   },
@@ -45,7 +45,7 @@
       "name": "Regular Customers",
       "class": "Cafe Guests",
       "ability": "Story Hints",
-      "description": "Cafe regulars with their own stories. Conversations with them provide crucial clues to recovering Mela's memories"
+      "description": "Cafe regulars each with their own story. Their conversations hold the key to helping them recover their lost memories"
     },
     "character3": {
       "name": "Dream Monsters",
@@ -59,10 +59,10 @@
     "subtitle": "Run a cafe by day, explore dreams by night!",
     "videoTitle": "Official Gameplay Trailer",
     "videos": {
-      "desc1": "HIPS N NOSES is a unique game that combines management simulation with action roguelike elements. At night, enter the dream world to defeat monsters and collect rare ingredients, and during the day, run a cafe that helps customers regain their lost memories in the real world.",
-      "desc2": "Each customer who visits the cafe has unique tastes and preferences. You can adjust and enhance recipes with the best ingredients through hints in conversations. Satisfying even the most demanding customers will bring greater rewards and profits.",
-      "desc3": "The ever-changing dream world offers a new experience with every exploration. Various people you meet in reality also appear in the dream world, and together you can defeat numerous monsters and collect special ingredients that cannot be obtained in reality.",
-      "desc4": "You can decorate your cafe with various kitchen tools, interact with diverse customers, and become stronger by defeating dream monsters. Through this growth system, you can efficiently serve more customers, adding depth and long-term fun to the game."
+      "desc1": "HIPS N NOSES is a unique blend of cafe management simulation and action roguelike gameplay. By night, dive into the dream world to battle monsters and gather rare ingredients. By day, run your cafe and help customers recover their lost memories.",
+      "desc2": "Every customer has their own unique tastes and preferences. Pick up on hints from your conversations to customize and perfect your recipes with the finest ingredients. Satisfy even the pickiest customers to earn bigger rewards and profits.",
+      "desc3": "The ever-shifting dream world offers fresh experiences with every visit. People you meet in reality appear in your dreams, fighting alongside you against countless monsters to collect rare ingredients you can't find anywhere else.",
+      "desc4": "Upgrade your cafe with new kitchen equipment, build relationships with a diverse cast of customers, and grow stronger by conquering dream monsters. This progression system lets you serve more customers more efficiently while adding depth and lasting replayability."
     }
   },
   "gameInfo": {
