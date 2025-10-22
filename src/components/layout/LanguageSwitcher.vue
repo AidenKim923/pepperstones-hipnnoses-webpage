@@ -1,0 +1,180 @@
+<template>
+  <div ref="languageSwitcherRef" class="language-switcher">
+    <button
+      class="lang-button"
+      :class="{ 'is-open': isOpen }"
+      aria-label="Language selector"
+      @click="toggleDropdown"
+    >
+      <span class="current-lang">{{ currentLanguage.flag }}</span>
+      <span class="arrow">{{ isOpen ? '▲' : '▼' }}</span>
+    </button>
+
+    <transition name="dropdown">
+      <div v-if="isOpen" class="lang-dropdown">
+        <button
+          v-for="lang in languages"
+          :key="lang.code"
+          class="lang-option"
+          :class="{ 'is-active': lang.code === locale }"
+          @click="selectLanguage(lang.code)"
+        >
+          <span class="lang-flag">{{ lang.flag }}</span>
+          <span class="lang-name">{{ lang.name }}</span>
+        </button>
+      </div>
+    </transition>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { saveLanguage } from '@/utils/languageDetector'
+import { loadLocaleMessages } from '@/plugins/i18n'
+import { useClickOutside } from '@/composables/useClickOutside'
+
+const { locale } = useI18n()
+
+const isOpen = ref(false)
+const languageSwitcherRef = ref(null)
+
+const languages = [
+  { code: 'ko', name: '한국어', flag: '🇰🇷' },
+  { code: 'en', name: 'English', flag: '🇺🇸' },
+  { code: 'ja', name: '日本語', flag: '🇯🇵' }
+]
+
+const currentLanguage = computed(() => {
+  return languages.find(lang => lang.code === locale.value) || languages[1]
+})
+
+/**
+ * 드롭다운 토글
+ */
+const toggleDropdown = () => {
+  isOpen.value = !isOpen.value
+}
+
+/**
+ * 언어 선택 및 변경
+ * 필요시 언어 파일을 동적으로 로드
+ */
+const selectLanguage = async (code) => {
+  if (locale.value === code) {
+    isOpen.value = false
+    return
+  }
+
+  // 언어 파일이 없으면 동적 로드
+  await loadLocaleMessages(code)
+
+  // 언어 변경
+  locale.value = code
+  saveLanguage(code)
+  isOpen.value = false
+
+  // HTML lang 속성 업데이트 (SEO & 접근성)
+  document.documentElement.lang = code
+}
+
+/**
+ * 외부 클릭 시 드롭다운 닫기
+ * useClickOutside composable 활용
+ */
+useClickOutside(languageSwitcherRef, () => {
+  isOpen.value = false
+})
+</script>
+
+<style scoped lang="scss">
+.language-switcher {
+  position: relative;
+
+  .lang-button {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: $spacing-sm $spacing-md;
+    background-color: $bg-elevated;
+    border: $border-width solid $border-primary;
+    border-radius: $border-radius-sm;
+    color: $text-primary;
+    font-size: $font-size-base;
+    cursor: pointer;
+    transition: all $transition-base;
+
+    &:hover {
+      background: $bg-hover;
+      border-color: $accent-secondary;
+    }
+
+    &.is-open {
+      background: $bg-hover;
+      border-color: $accent-secondary;
+    }
+
+    .arrow {
+      font-size: $font-size-xs;
+    }
+  }
+
+  .lang-dropdown {
+    position: absolute;
+    top: calc(100% + $spacing-sm);
+    right: 0;
+    min-width: 150px;
+    background-color: $bg-elevated;
+    border: $border-width solid $border-primary;
+    border-radius: $border-radius-md;
+    box-shadow: $shadow-lg;
+    overflow: hidden;
+    z-index: $z-dropdown;
+  }
+
+  .lang-option {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    width: 100%;
+    padding: $spacing-md;
+    background-color: transparent;
+    border: none;
+    border-bottom: $border-width solid $border-primary;
+    color: $text-primary;
+    font-size: $font-size-base;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color $transition-fast;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background-color: $bg-hover;
+    }
+
+    &.is-active {
+      background-color: $accent-secondary;
+      font-weight: 700;
+      color: $text-primary;
+    }
+
+    .lang-flag {
+      font-size: $font-size-xl;
+    }
+  }
+}
+
+.dropdown-enter-active,
+.dropdown-leave-active {
+  transition: all $transition-base;
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+</style>

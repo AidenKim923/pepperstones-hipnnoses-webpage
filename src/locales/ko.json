@@ -1,0 +1,115 @@
+{
+  "hero": {
+    "title": "HIPS N NOSES",
+    "subtitle": "힙스 앤 노즈",
+    "catchphrase": "잠 못 드는 세상에서 멜라만 꿈을 꾼다",
+    "soundEffect": "DREAM!",
+    "cta": {
+      "video": "게임플레이 영상 보기",
+      "wishlist": "Steam 위시리스트 추가"
+    },
+    "scrollHint": "스크롤하여 더 알아보기"
+  },
+  "features": {
+    "title": "게임 특징",
+    "recipe": {
+      "title": "레시피 커스터마이징",
+      "description": "각 고객의 취향에 맞춘 음식과 음료를 제작하고, 완벽한 서비스로 카페를 성공시키세요!",
+      "effect": "YUM!"
+    },
+    "combat": {
+      "title": "꿈의 세계 전투",
+      "description": "밤이 되면 몽환적인 꿈의 세계로! 로그라이크 액션으로 몬스터를 물리치고 재료를 수집하세요!",
+      "effect": "ZZAP!"
+    },
+    "cafe": {
+      "title": "카페 커스터마이징",
+      "description": "수익을 투자해 카페를 업그레이드하고, 새로운 메뉴와 인테리어로 나만의 공간을 만드세요!",
+      "effect": "DING!"
+    },
+    "story": {
+      "title": "스토리 중심 여정",
+      "description": "손님들을 위해 기억의 꽃을 모아 잃어버린 기억을 되찾아주세요!",
+      "effect": "POW!"
+    }
+  },
+  "characters": {
+    "title": "캐릭터 소개",
+    "character1": {
+      "name": "멜라",
+      "class": "카페 주인",
+      "ability": "레시피 커스터마이징",
+      "description": "꿈을 꿀 수 있는 유일한 사람. 낮에는 카페를 운영하고 밤에는 꿈의 세계에서 잃어버린 기억을 찾아 헤맨다"
+    },
+    "character2": {
+      "name": "단골 손님들",
+      "class": "카페 고객",
+      "ability": "스토리 힌트 제공",
+      "description": "각자의 사연을 가진 카페 손님들. 그들과의 대화는 멜라의 기억을 되찾는 중요한 단서가 된다"
+    },
+    "character3": {
+      "name": "꿈의 몬스터",
+      "class": "보스 몬스터",
+      "ability": "특별한 재료 드랍",
+      "description": "꿈의 세계를 배회하는 신비한 존재들. 물리치면 희귀한 재료를 얻을 수 있다"
+    }
+  },
+  "gameplay": {
+    "title": "게임플레이 갤러리",
+    "subtitle": "낮에는 카페 운영, 밤에는 꿈의 세계 탐험!",
+    "videoTitle": "공식 게임플레이 트레일러",
+    "videos": {
+      "desc1": "HIPS N NOSES는 경영 시뮬레이션과 액션 로그라이크 요소가 결합된 독특한 게임이에요. 밤에는 꿈속 세계로 들어가 몬스터를 물리치고 희귀한 재료를 수집하고, 낮에는 현실 세계에서 손님들의 잃어버린 기억을 되찾아주는 카페를 운영해요.",
+      "desc2": "카페를 방문하는 각 손님은 독특한 취향과 선호도를 가지고 있어요. 대화 속 힌트를 통해 최고의 재료로 레시피를 조절하고 강화할 수 있어요. 까다로운 손님까지 만족시키면 더 큰 보상과 이익을 얻을 수 있답니다.",
+      "desc3": "끊임없이 변화하는 꿈속 세계는 탐험할 때마다 새로운 경험을 제공해요. 현실에서 만난 다양한 사람들이 꿈속 세계에도 등장하며, 함께 수많은 몬스터를 물리치고 현실에서는 얻을 수 없는 특별한 재료를 모을 수 있어요.",
+      "desc4": "다양한 주방 도구로 카페를 꾸미고, 다양한 손님과 교류하며, 꿈속 몬스터를 물리쳐 더 강해질 수 있어요. 이러한 성장 시스템을 통해 더 많은 손님을 효율적으로 응대하며 게임에 깊이와 장기적인 재미를 더할 수 있어요."
+    }
+  },
+  "gameInfo": {
+    "title": "게임 정보",
+    "releaseDate": {
+      "label": "출시",
+      "value": "2026년 Q1 (얼리 액세스)"
+    },
+    "platform": {
+      "label": "플랫폼",
+      "value": "PC (Steam)"
+    },
+    "genre": {
+      "label": "장르",
+      "value": "카페 시뮬레이션 + 액션 로그라이크"
+    },
+    "developer": {
+      "label": "개발사",
+      "value": "PepperStones.Inc"
+    },
+    "steamLink": "Steam에서 보기"
+  },
+  "social": {
+    "title": "커뮤니티",
+    "subtitle": "최신 소식을 받아보세요!",
+    "steam": "Steam 페이지",
+    "discord": "디스코드 참여",
+    "x": "X 팔로우",
+    "instagram": "인스타그램 팔로우",
+    "newsletter": {
+      "title": "뉴스레터 구독",
+      "placeholder": "이메일 주소",
+      "button": "구독하기"
+    }
+  },
+  "footer": {
+    "rights": "© 2025 PepperStones.Inc. All rights reserved.",
+    "language": "언어"
+  },
+  "error": {
+    "title": "앗! 문제가 발생했습니다",
+    "message": "죄송합니다. 예기치 않은 문제가 발생했습니다. 페이지를 새로고침하거나 문제가 지속되면 저희에게 연락해 주세요.",
+    "reload": "페이지 새로고침",
+    "reset": "다시 시도",
+    "technicalDetails": "기술적 세부 정보"
+  },
+  "accessibility": {
+    "skipToContent": "본문으로 건너뛰기"
+  }
+}

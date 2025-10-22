@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta Tags -->
+  <title>HIPS N NOSES - 카페 시뮬레이션 + 액션 로그라이크 게임</title>
+  <meta name="title" content="HIPS N NOSES - 카페 시뮬레이션 + 액션 로그라이크 게임">
+  <meta name="description" content="잠 못 드는 세상에서 멜라만 꿈을 꾼다. 낮에는 카페 운영, 밤에는 꿈의 세계 탐험! 카페 시뮬레이션과 액션 로그라이크가 결합된 독특한 인디게임. 2026년 Steam 출시 예정.">
+  <meta name="keywords" content="게임, 카페 시뮬레이션, 로그라이크, 액션, 인디게임, Steam, 카페 경영, 요리, RPG, 여성 주인공, PepperStones, HIPS N NOSES">
+  <meta name="author" content="PepperStones.Inc">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#1a1a2e">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hipsnoses.com/">
+  <meta property="og:title" content="HIPS N NOSES - 카페 시뮬레이션 + 액션 로그라이크">
+  <meta property="og:description" content="잠 못 드는 세상에서 멜라만 꿈을 꾼다. 낮에는 카페 운영, 밤에는 꿈의 세계 탐험!">
+  <meta property="og:image" content="/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="HIPS N NOSES">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://hipsnoses.com/">
+  <meta name="twitter:title" content="HIPS N NOSES - 카페 시뮬레이션 + 액션 로그라이크">
+  <meta name="twitter:description" content="잠 못 드는 세상에서 멜라만 꿈을 꾼다. 카페 시뮬레이션 + 액션 로그라이크">
+  <meta name="twitter:image" content="/og-image.jpg">
+  <meta name="twitter:site" content="@Pepper_Stones">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Preconnect to external domains (성능 최적화) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="dns-prefetch" href="https://www.youtube.com">
+  <link rel="dns-prefetch" href="https://shared.fastly.steamstatic.com">
+
+  <!-- 폰트 최적화: 실제 사용하는 weight만 포함 (400, 600, 700) -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Inter:wght@400;600;700&family=Noto+Sans+KR:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- MitmiFont Preload -->
+  <link href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_1@1.0/Ownglyph_meetme-Rg.woff2" rel="preload" as="font" type="font/woff2" crossorigin>
+
+  <!-- Critical CSS (인라인) -->
+  <style>
+    /* 폰트 정의 */
+    @font-face {
+      font-family: 'MitmiFont';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_1@1.0/Ownglyph_meetme-Rg.woff2') format('woff2');
+      font-weight: normal;
+      font-display: swap;
+    }
+
+    /* 초기 로딩 스타일 (FOUC 방지) */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      background-color: #1a1a2e;
+      color: #e0e0e0;
+    }
+
+    #app {
+      min-height: 100vh;
+    }
+
+    /* 로딩 스피너 (선택 사항) */
+    .app-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #1a1a2e;
+    }
+  </style>
+
+  <!-- Structured Data (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "HIPS N NOSES",
+    "description": "잠 못 드는 세상에서 멜라만 꿈을 꾼다. 낮에는 카페 운영, 밤에는 꿈의 세계 탐험! 카페 시뮬레이션과 액션 로그라이크가 결합된 독특한 게임.",
+    "genre": ["Simulation", "Action", "Roguelike"],
+    "gamePlatform": ["PC"],
+    "publisher": {
+      "@type": "Organization",
+      "name": "PepperStones.Inc"
+    },
+    "releaseDate": "2026-Q1",
+    "applicationCategory": "Game",
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/PreOrder",
+      "url": "https://store.steampowered.com/app/3574200/HIPS_N_NOSES/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
