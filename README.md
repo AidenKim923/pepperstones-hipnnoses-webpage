@@ -35,6 +35,9 @@
 
 [HIPS N NOSES on Steam](https://store.steampowered.com/app/3574200/HIPS_N_NOSES/)
 
+## 페이지
+[Netlify application](https://hipnnoses.netlify.app/)
+
 ## 라이선스
 
 이 프로젝트의 소스 코드는 MIT 라이선스를 따르며, 게임 관련 이미지 및 자산의 저작권은 PepperStones.Inc.에 있습니다. 자세한 내용은 [LICENSE](LICENSE) 파일을 참조하세요.
