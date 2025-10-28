@@ -18,7 +18,6 @@
 - **Frontend**: Vue 3 
 - **Build Tool**: Vite
 - **Styling**: SCSS 
-- **Typography**: Space Grotesk, Inter
 - **i18n**: Vue I18n
 - **Code Quality**: ESLint, Prettier
 - **Deployment**: Netlify
@@ -35,8 +34,11 @@
 
 [HIPS N NOSES on Steam](https://store.steampowered.com/app/3574200/HIPS_N_NOSES/)
 
-## 페이지
-[Netlify application](https://hipnnoses.netlify.app/)
+## 미리보기 페이지
+[Demo Page](https://hipnnoses.netlify.app/)
+
+![QR코드](QRCode.png)
+
 
 ## 라이선스
 
